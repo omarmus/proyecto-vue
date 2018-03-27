@@ -1,85 +1,24 @@
 <template>
-  <div class="app-navbar">
-    <header>
-      <h1>{{ nombre }}</h1>
-    </header>
-    <nav>
-      <ul class="menu">
-        <li
-          v-for="item in menu"
-          :key="item.path">
-          <router-link
-            :class="path === item.path ? 'active' : ''"
-            :to="item.path">
-            {{ item.label }}
-          </router-link>
-        </li>
-      </ul>
-    </nav>
-  </div>
+  <header class="app-navbar">
+    <a href="">Cerrar sesión</a>
+  </header>
 </template>
-
-<script>
-export default {
-  data () {
-    return {
-      nombre: 'Proyecto Vue',
-      path: '/',
-      menu: [
-        {
-          path: '/',
-          label: 'Inicio'
-        },
-        {
-          path: '/empresas',
-          label: 'Empresas'
-        }
-      ]
-    }
-  }
-}
-</script>
 
 <style lang="scss">
 @import '../../assets/scss/_variables.scss';
-
-$menu: #2c2e3e;
-$link: #868aa8;
-
 .app-navbar {
-  background-color: $menu;
-  color: white;
+  background-color: white;
+  text-align: right;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
 
-  header {
-    background-color: darken($menu, 4%);
-    h1 {
-      font-size: 1.6rem;
-      margin: 0;
-      padding: 15px 10px;
-      font-weight: 400;
-      color: $link;
-    }
-  }
+  a {
+    display: inline-block;
+    line-height: $navHeight;
+    padding: 0 20px;
+    text-decoration: none;
 
-  nav {
-    .menu {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-
-      li {
-        a {
-          display: block;
-          line-height: 50px;
-          text-decoration: none;
-          padding: 0 15px;
-          color: $link;
-
-          &:hover {
-            background-color: darken($menu, 2%);
-          }
-        }
-      }
+    &:hover {
+      background-color: #f5f5f5;
     }
   }
 }

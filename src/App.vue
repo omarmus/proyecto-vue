@@ -1,21 +1,26 @@
 <template>
   <div id="app" class="app">
-    <app-navbar></app-navbar>
-    <main>
-      <router-view/>
-    </main>
-    <app-footer></app-footer>
+    <app-sidenav></app-sidenav>
+    <div class="app-main">
+      <app-navbar></app-navbar>
+      <main>
+        <router-view/>
+      </main>
+      <app-footer></app-footer>
+    </div>
   </div>
 </template>
 
 <script>
 import AppNavbar from './components/layout/AppNavbar'
+import AppSidenav from './components/layout/AppSidenav'
 import AppFooter from './components/layout/AppFooter'
 
 export default {
   name: 'App',
   components: {
     AppNavbar,
+    AppSidenav,
     AppFooter
   }
 }
@@ -26,11 +31,17 @@ export default {
 
 .app {
   display: grid;
-  grid-template-columns: 250px 1fr;
   height: 100vh;
+  grid-template-columns: 260px 1fr;
 
-  main {
-    padding: 30px;
+  .app-main {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: $navHeight 1fr 30px;
+
+    main {
+      padding: 30px;
+    }
   }
 }
 </style>

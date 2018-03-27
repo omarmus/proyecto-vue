@@ -6,12 +6,11 @@
 
 <style lang="scss">
 .app-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  background-color: white;
+  color: #aaa;
   text-align: right;
-  padding: 5px 10px;
-  font-size: 0.9rem;
+  padding: 0 10px;
+  line-height: 30px;
+  font-size: 0.8rem;
 }
 </style>
