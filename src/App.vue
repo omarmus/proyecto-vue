@@ -1,23 +1,36 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+  <div id="app" class="app">
+    <app-navbar></app-navbar>
+    <main>
+      <router-view/>
+    </main>
+    <app-footer></app-footer>
   </div>
 </template>
 
 <script>
+import AppNavbar from './components/layout/AppNavbar'
+import AppFooter from './components/layout/AppFooter'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    AppNavbar,
+    AppFooter
+  }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss">
+@import './assets/scss/index.scss';
+
+.app {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  height: 100vh;
+
+  main {
+    padding: 30px;
+  }
 }
 </style>
