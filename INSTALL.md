@@ -32,7 +32,16 @@ https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/
 # 4. Instalando Sass
 https://sass-lang.com/guide
 
-npm install node-sass sass-loader --save
+npm install node-sass sass-loader --save-dev
 
-# 5. Instalando una fuente en nuestro proyecto
+# 5. Instalando axios
+
+npm install axios --save
+
+# 6. Instalando vuetify
+
+npm install vuetify --save
+
+# 5. Instalando una fuente en nuestro proyecto para vuetify y material icons
 https://fonts.google.com/
+
