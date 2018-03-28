@@ -4,23 +4,33 @@ Creando una aplicación con VueJS
 https://github.com/vuejs-templates/webpack
 
 ### Instalando vue-cli
+``` bash
 npm install -g vue-cli
+```
 
 ### Creando proyecto
+``` bash
 vue init webpack taller-vue
+```
 
 ### Instalando paquetes
+``` bash
 npm install
+```
 
 ### Iniciando proyecto
+``` bash
 npm run dev
+```
 
 ## 2. Creando repositorio git y enlazando con nuestro proyecto
+``` bash
 git init
 git add --all
 git commit -m "inicio"
 git remote add origin https://github.com/omarmus/taller-vue
 git push -u origin master
+```
 
 ## 3. Instalando Vue tools
 Chrome
@@ -31,21 +41,17 @@ https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/
 
 ## 4. Instalando Sass
 https://sass-lang.com/guide
-
+``` bash
 npm install node-sass sass-loader --save-dev
-
+```
 ## 5. Instalando axios
-
+``` bash
 npm install axios --save
-
-## 6. Instalando vuetify
-
-npm install vuetify --save
-
-## 7. Instalando  fuentes a nuestro proyecto
+```
+## 6. Instalando  fuentes a nuestro proyecto
 https://fonts.google.com/
 
-## 8. Recursos
+## 7. Recursos
 
 ### Curso gratuito completo de VueJS con Firebase en video
 
