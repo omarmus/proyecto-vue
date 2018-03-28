@@ -51,6 +51,10 @@ https://fonts.google.com/
 
 http://vue.wmedia.es/
 
+### Curso gratuito de Vuex
+
+https://vueschool.io/courses/vuex-for-everyone
+
 ### Chat recursos de Javascript 
 
 https://discord.gg/tYZUHUF
