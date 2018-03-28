@@ -1,26 +1,48 @@
 <template>
   <section>
-    <h2>Lista de empresas</h2>
-    <div class="btn-container">
-      <button type="button" @click="agregar">Agregar</button>
+    <div class="form" v-if="!lista">
+      <h2>Agregar empresa</h2>
+      <form @submit.prevent="enviar">
+        <p>
+          Nombre: <input type="text" v-model="nombre">
+        </p>
+        <p>
+          Dirección: <input type="text" v-model="direccion">
+        </p>
+        <button type="button" @click="lista = true">Cancelar</button>
+        <button type="submit">Enviar</button>
+      </form>
     </div>
-    <table>
-      <tr>
-        <th>Nombre</th>
-        <th>Dirección</th>
-        <th>Acciones</th>
-      </tr>
-      <tr v-for="item in items"
-        :key="item.id"
-      >
-        <td>{{ item.nombre }}</td>
-        <td>{{ item.direccion }}</td>
-        <td>
-          <button type="button" @click="editar(item.id)">Editar</button>
-          <button type="button" @click="eliminar(item.id)">Eliminar</button>
-        </td>
-      </tr>
-    </table>
+    <div class="lista" v-if="lista">
+      <h2>Lista de empresas</h2>
+      <div class="btn-container">
+        <button @click="mostrarForm">Agregar empresa</button>
+      </div>
+      <table>
+        <tr>
+          <th>Nombre</th>
+          <th>Dirección</th>
+          <th>Acciones</th>
+        </tr>
+        <tr v-for="item in empresas" :key="item.id">
+          <td>{{ item.nombre }}</td>
+          <td>{{ item.direccion }}</td>
+          <td>
+            <button
+              type="button"
+              @click="eliminar(item.id)"
+            >
+              Eliminar
+            </button>
+            <button
+              type="button"
+              @click="editar(item.id)">
+              Actualizar
+            </button>
+          </td>
+        </tr>
+      </table>
+    </div>
   </section>
 </template>
 
@@ -28,39 +50,81 @@
 import axios from 'axios'
 
 const url = 'http://localhost:4000/api-rest/'
-
 export default {
-  mounted () {
-    this.lista()
-  },
   data () {
     return {
-      items: []
+      empresas: [],
+      id: '',
+      nombre: '',
+      direccion: '',
+      lista: true
     }
   },
+  created () {
+    this.listar()
+  },
   methods: {
-    lista () {
+    listar () {
       axios.get(`${url}empresas`)
         .then(respuesta => {
-          this.items = respuesta.data
+          this.empresas = respuesta.data
         })
     },
-    agregar () {
-      this.$router.push('agregarEmpresa')
+    enviar () {
+      if (this.id) {
+        // actualizar
+        let datos = {
+          id: this.id,
+          nombre: this.nombre,
+          direccion: this.direccion
+        }
+        axios.put(`${url}empresas/${this.id}`, datos)
+          .then(respuesta => {
+            this.listar()
+            this.lista = true
+          })
+      } else {
+        // crear
+        let datos = {
+          nombre: this.nombre,
+          direccion: this.direccion
+        }
+        console.log('enviado', datos)
+        axios.post(`${url}empresas`, datos)
+          .then(respuesta => {
+            this.listar()
+            this.lista = true
+          })
+      }
+    },
+    eliminar (id) {
+      if (confirm('¿Eliminar?')) {
+        axios.delete(`${url}empresas/${id}`)
+          .then(respuesta => {
+            this.listar()
+          })
+      }
     },
     editar (id) {
       axios.get(`${url}empresas/${id}`)
         .then(respuesta => {
-          this.$router.push('agregarEmpresa')
+          let empresa = respuesta.data
+          this.id = empresa.id
+          this.nombre = empresa.nombre
+          this.direccion = empresa.direccion
+          this.lista = false
         })
     },
-    eliminar (id) {
-      if (confirm('Eliminar registro')) {
-        axios.delete(`${url}empresas/${id}`)
-          .then(respuesta => {
-            this.lista()
-          })
-      }
+    mostrarForm () {
+      this.lista = false
+      this.id = ''
+      this.nombre = ''
+      this.direccion = ''
+    }
+  },
+  watch: {
+    'nombre': function (val) {
+      console.log('Escuchando nombre', val)
     }
   }
 }

@@ -36,7 +36,6 @@ export default {
 
   .app-main {
     display: grid;
-    height: 100vh;
     grid-template-rows: $navHeight 1fr 30px;
 
     main {
