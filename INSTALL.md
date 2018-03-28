@@ -28,7 +28,7 @@ npm run dev
 git init
 git add --all
 git commit -m "inicio"
-git remote add origin https://github.com/omarmus/taller-vue
+git remote add origin https://github.com/[direccion de tu usuario y repositorio]
 git push -u origin master
 ```
 
