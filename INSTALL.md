@@ -42,10 +42,10 @@ npm install axios --save
 
 npm install vuetify --save
 
-## 5. Instalando  fuentes a nuestro proyecto
+## 7. Instalando  fuentes a nuestro proyecto
 https://fonts.google.com/
 
-## Recursos
+## 8. Recursos
 
 ### Curso gratuito completo de VueJS con Firebase en video
 
