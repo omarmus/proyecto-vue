@@ -55,6 +55,10 @@ http://vue.wmedia.es/
 
 https://vueschool.io/courses/vuex-for-everyone
 
-### Chat recursos de Javascript 
+### Comunidad de Javascript lapaz.js en discord
 
 https://discord.gg/tYZUHUF
+
+### Comunidad oficial de Vue en discord
+
+https://vue-land.js.org/
